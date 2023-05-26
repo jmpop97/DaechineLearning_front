@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <title>게시글 정보</title>
+</head>
+
+<body>
+    <h1>게시글 정보</h1>
+    <p>
+        <img id="album-cover" src="" alt=""><br>
+    </p>
+    <p>
+        ID: <span id="id"></span>
+    </p>
+    <p>
+        제목: <span id="title"></span>
+    </p>
+    <p>
+        작성자: <span id="user"></span>
+    </p>
+    <p>
+        곡명: <span id="music_id"></span>
+    </p>
+    <p>
+        내용: <span id="content"></span>
+    </p>
+    <p>
+        장르: <span id="genre"></span>
+    </p>
+
+    <script>
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const img = document.querySelector('#album-cover');
+        console.log(img)
+
+        // 쿼리 문자열에서 데이터를 가져옴
+        const id = urlParams.get('id')
+        const images = urlParams.get('images')
+        const title = urlParams.get('title')
+        const user = urlParams.get('user')
+        const music_id = urlParams.get('music_id')
+        const content = urlParams.get('content')
+        const genre = urlParams.get('genre')
+
+        // 가져온 데이터를 화면에 출력
+        document.querySelector('#id').textContent = id
+        document.querySelector('#title').textContent = title
+        document.querySelector('#user').textContent = user
+        document.querySelector('#music_id').textContent = music_id
+        document.querySelector('#content').textContent = content
+        document.querySelector('#genre').textContent = genre
+        img.src = images;
+        img.alt = '앨범 자켓';
+
+    </script>
+</body>
+
+</html>

@@ -11,7 +11,7 @@ if (localStorage.getItem("access")) {
 // 이모티콘 보이기/숨기기
 function emoticonToggle(emoticon_popup) {
     const emoticonPopup = document.getElementById(emoticon_popup.id)
-    
+
     if (emoticonPopup.style.display == 'none') {
         emoticonPopup.setAttribute('style', 'position: relative; z-index: 1; margin-top: -17px; display: block;')
     } else if (emoticonPopup.style.display == 'block') {
@@ -100,30 +100,30 @@ async function emoticonButtonList(user_emoticon_list, emoticon_popup, emoticonbt
 
                 const image_input_box_ = document.getElementById(use_emoticon)
                 baseEmoticonImage.addEventListener('click', function () {
-                        if (!image_input_box_.alt == 'none') {
+                    if (!image_input_box_.alt == 'none') {
+                        image_input_box_.removeAttribute('src')
+                        image_input_box_.removeAttribute('alt')
+
+                        image_input_box_.setAttribute('src', `${back_base_url}${image.image}`)
+                        image_input_box_.setAttribute('style', 'width: 50px; margin: auto;')
+                        image_input_box_.setAttribute('id', use_emoticon)
+                        image_input_box_.setAttribute('alt', `${image.id}`)
+                        image_input_box_.addEventListener('click', function () {
                             image_input_box_.removeAttribute('src')
                             image_input_box_.removeAttribute('alt')
-
-                            image_input_box_.setAttribute('src', `${back_base_url}${image.image}`)
-                            image_input_box_.setAttribute('style', 'width: 50px; margin: auto;')
-                            image_input_box_.setAttribute('id', use_emoticon)
-                            image_input_box_.setAttribute('alt', `${image.id}`)
-                            image_input_box_.addEventListener('click', function () {
-                                image_input_box_.removeAttribute('src')
-                                image_input_box_.removeAttribute('alt')
-                            })
-                        } else {
-                            image_input_box_.setAttribute('src', `${back_base_url}${image.image}`)
-                            image_input_box_.setAttribute('style', 'width: 50px; margin: auto;')
-                            image_input_box_.setAttribute('id', use_emoticon)
-                            image_input_box_.setAttribute('alt', `${image.id}`)
-                            image_input_box_.addEventListener('click', function () {
-                                image_input_box_.removeAttribute('src')
-                                image_input_box_.removeAttribute('alt')
-                            })
-                        }
-                        emoticonToggle(emoticonPopup)
-                    })
+                        })
+                    } else {
+                        image_input_box_.setAttribute('src', `${back_base_url}${image.image}`)
+                        image_input_box_.setAttribute('style', 'width: 50px; margin: auto;')
+                        image_input_box_.setAttribute('id', use_emoticon)
+                        image_input_box_.setAttribute('alt', `${image.id}`)
+                        image_input_box_.addEventListener('click', function () {
+                            image_input_box_.removeAttribute('src')
+                            image_input_box_.removeAttribute('alt')
+                        })
+                    }
+                    emoticonToggle(emoticonPopup)
+                })
 
                 baseEmoticonImages.appendChild(baseEmoticonImage)
             });
@@ -138,44 +138,44 @@ async function emoticonButtonList(user_emoticon_list, emoticon_popup, emoticonbt
 
         const baseEmoticonImages = document.getElementById(emoticon_images)
 
-            while (baseEmoticonImages.firstChild) {
-                baseEmoticonImages.firstChild.remove();
-            }
-            response_baseemoticon.images.forEach(image => {
-                const baseEmoticonImage = document.createElement('img')
-                baseEmoticonImage.setAttribute('src', `${back_base_url}${image.image}`)
-                baseEmoticonImage.setAttribute('style', 'height: 110px')
+        while (baseEmoticonImages.firstChild) {
+            baseEmoticonImages.firstChild.remove();
+        }
+        response_baseemoticon.images.forEach(image => {
+            const baseEmoticonImage = document.createElement('img')
+            baseEmoticonImage.setAttribute('src', `${back_base_url}${image.image}`)
+            baseEmoticonImage.setAttribute('style', 'height: 110px')
 
-                const image_input_box_ = document.getElementById(use_emoticon)
-                baseEmoticonImage.addEventListener('click', function () {
-                        if (!image_input_box_.alt == 'none') {
-                            image_input_box_.removeAttribute('src')
-                            image_input_box_.removeAttribute('alt')
+            const image_input_box_ = document.getElementById(use_emoticon)
+            baseEmoticonImage.addEventListener('click', function () {
+                if (!image_input_box_.alt == 'none') {
+                    image_input_box_.removeAttribute('src')
+                    image_input_box_.removeAttribute('alt')
 
-                            image_input_box_.setAttribute('src', `${back_base_url}${image.image}`)
-                            image_input_box_.setAttribute('style', 'width: 50px; margin: auto;')
-                            image_input_box_.setAttribute('id', use_emoticon)
-                            image_input_box_.setAttribute('alt', `${image.id}`)
-                            image_input_box_.addEventListener('click', function () {
-                                image_input_box_.removeAttribute('src')
-                                image_input_box_.removeAttribute('alt')
-                            })
-                        } else {
-                            image_input_box_.setAttribute('src', `${back_base_url}${image.image}`)
-                            image_input_box_.setAttribute('style', 'width: 50px; margin: auto;')
-                            image_input_box_.setAttribute('id', use_emoticon)
-                            image_input_box_.setAttribute('alt', `${image.id}`)
-                            image_input_box_.addEventListener('click', function () {
-                                image_input_box_.removeAttribute('src')
-                                image_input_box_.removeAttribute('alt')
-                            })
-                        }
-                        emoticonToggle(emoticonPopup)
+                    image_input_box_.setAttribute('src', `${back_base_url}${image.image}`)
+                    image_input_box_.setAttribute('style', 'width: 50px; margin: auto;')
+                    image_input_box_.setAttribute('id', use_emoticon)
+                    image_input_box_.setAttribute('alt', `${image.id}`)
+                    image_input_box_.addEventListener('click', function () {
+                        image_input_box_.removeAttribute('src')
+                        image_input_box_.removeAttribute('alt')
                     })
+                } else {
+                    image_input_box_.setAttribute('src', `${back_base_url}${image.image}`)
+                    image_input_box_.setAttribute('style', 'width: 50px; margin: auto;')
+                    image_input_box_.setAttribute('id', use_emoticon)
+                    image_input_box_.setAttribute('alt', `${image.id}`)
+                    image_input_box_.addEventListener('click', function () {
+                        image_input_box_.removeAttribute('src')
+                        image_input_box_.removeAttribute('alt')
+                    })
+                }
+                emoticonToggle(emoticonPopup)
+            })
 
-                baseEmoticonImages.appendChild(baseEmoticonImage)
-            });
-        
+            baseEmoticonImages.appendChild(baseEmoticonImage)
+        });
+
         // 유저가 가진 이모티콘 리스트 추가
         const response_useremoticon = await getUserEmoticon(userId);
         const userEmoticonList = document.getElementById(user_emoticon_list)
@@ -227,7 +227,7 @@ async function emoticonButtonList(user_emoticon_list, emoticon_popup, emoticonbt
                     emoticonImages.appendChild(emoticonImage)
                 });
             });
-            
+
             userEmoticon.appendChild(userEmoticonButton)
 
             const userEmoticonButtonSpan = document.createElement('span')
@@ -237,7 +237,7 @@ async function emoticonButtonList(user_emoticon_list, emoticon_popup, emoticonbt
     }
     emoticonPopup.style.display = 'block'
     const emotiBtn = document.getElementById(emoticonbtn)
-    emotiBtn.setAttribute('onclick',`emoticonToggle(${emoticonPopup.id})`)
+    emotiBtn.setAttribute('onclick', `emoticonToggle(${emoticonPopup.id})`)
 }
 
 // 댓글 등록
@@ -253,26 +253,26 @@ async function commentCreate(article_id) {
             else {
                 const access = localStorage.getItem("access");
 
-            const formData = new FormData();
-            formData.append("comment", commentContent);
-            formData.append("use_emoticon", commentEmoticon);
-            formData.append("music", `${article_id}`);
+                const formData = new FormData();
+                formData.append("comment", commentContent);
+                formData.append("use_emoticon", commentEmoticon);
+                formData.append("music", `${article_id}`);
 
-            const response = await fetch(`${back_base_url}/comments/${articleId}/comment/`, {
-                headers: {
-                    Authorization: `Bearer ${access}`,
-                },
-                method: "POST",
-                body: formData,
-            });
-            const data = await response.json();
+                const response = await fetch(`${back_base_url}/comments/${articleId}/comment/`, {
+                    headers: {
+                        Authorization: `Bearer ${access}`,
+                    },
+                    method: "POST",
+                    body: formData,
+                });
+                const data = await response.json();
 
-            if (response.status == 200) {
-                alert("등록 완료!")
-                window.location.reload()
-            } else {
-                alert("잘못 된 요청입니다.");
-            }
+                if (response.status == 200) {
+                    alert("등록 완료!")
+                    window.location.reload()
+                } else {
+                    alert("잘못 된 요청입니다.");
+                }
             }
         } else {
             const access = localStorage.getItem("access");
@@ -310,25 +310,25 @@ function commentUpdate(comment_id) {
 
     const commentP = comment.childNodes[1].lastChild
     const commentPValue = commentP.innerText
-    
+
     const commentUsedEmoticon = comment.childNodes[1].firstChild
     const commentUsedEmoticonId = commentUsedEmoticon.alt
     const commentUsedEmoticonSrc = commentUsedEmoticon.src
 
     const emoticonDiv = document.createElement('div')
     emoticonDiv.setAttribute('class', 'card text-center')
-    
+
     const updateCommentEmoticon = document.createElement('img')
-    updateCommentEmoticon.setAttribute('style','width: 50px; margin: auto;')
+    updateCommentEmoticon.setAttribute('style', 'width: 50px; margin: auto;')
     updateCommentEmoticon.setAttribute('id', 'update_use_emoticon')
     if (commentUsedEmoticonSrc == undefined) {
-        
+
         updateCommentEmoticon.src = ''
         updateCommentEmoticon.alt = ''
     } else {
         updateCommentEmoticon.src = commentUsedEmoticonSrc
         updateCommentEmoticon.alt = commentUsedEmoticonId
-        
+
     }
     updateCommentEmoticon.addEventListener('click', function () {
         updateCommentEmoticon.src = ''
@@ -336,16 +336,16 @@ function commentUpdate(comment_id) {
     });
     emoticonDiv.appendChild(updateCommentEmoticon)
     commentUsedEmoticon.style.display = 'none'
-    
+
     const updateEmoticonButton = document.createElement('button')
     updateEmoticonButton.innerText = '이모티콘'
-    updateEmoticonButton.setAttribute('class','mb-3')
-    updateEmoticonButton.setAttribute('id','update_emoticon_button')
+    updateEmoticonButton.setAttribute('class', 'mb-3')
+    updateEmoticonButton.setAttribute('id', 'update_emoticon_button')
     updateEmoticonButton.setAttribute('onclick', 'emoticonButtonList("update_emoticon_list", "update_emoticon_popup", "update_emoticon_button", "update_emoticon_images", "update_use_emoticon")')
-    
+
     const popupParentsDiv = document.createElement('div')
     popupParentsDiv.setAttribute('style', 'height: 0px;')
-    
+
     const popupDiv = document.createElement('div')
     popupDiv.setAttribute('class', 'card text-center;')
     popupDiv.setAttribute('style', 'position: relative; z-index: 1; margin-top: -17px; display: none;')
@@ -357,28 +357,28 @@ function commentUpdate(comment_id) {
     popupDiv.appendChild(chDiv)
 
     const updateEmoticonList = document.createElement('ul')
-    updateEmoticonList.setAttribute('class','nav nav-tabs card-header-tabs mb-3')
+    updateEmoticonList.setAttribute('class', 'nav nav-tabs card-header-tabs mb-3')
     updateEmoticonList.setAttribute('id', 'update_emoticon_list')
     chDiv.appendChild(updateEmoticonList)
-    
+
     const updateEmoticonImages = document.createElement('div')
-    updateEmoticonImages.setAttribute('class','row row-cols-5 row-cols-md-5')
+    updateEmoticonImages.setAttribute('class', 'row row-cols-5 row-cols-md-5')
     updateEmoticonImages.setAttribute('style', 'overflow-y: scroll; height: 220px;')
     updateEmoticonImages.setAttribute('id', 'update_emoticon_images')
     chDiv.appendChild(updateEmoticonImages)
-    
-    
+
+
     // 버튼 기능 추가중
-    
+
     updateEmoticonButton.addEventListener('click', function () {
 
     });
-    
+
     emoticonDiv.appendChild(updateEmoticonButton)
     emoticonDiv.appendChild(popupParentsDiv)
-    
+
     comment.childNodes[1].appendChild(emoticonDiv)
-    
+
     const updateCommentInput = document.createElement('input')
     updateCommentInput.setAttribute('type', 'text')
     updateCommentInput.setAttribute('class', 'form-control')
@@ -410,12 +410,12 @@ async function commentUpdateConfirm(comment_id) {
             alert("내용을 입력해주세요!")
         } else {
             const access = localStorage.getItem("access");
-    
+
             const formData = new FormData();
             formData.append("comment", commentUpdateContent);
             formData.append("music", `${articleId}`);
             formData.append("use_emoticon", commentUpdateEmoticon);
-    
+
             const response = await fetch(`${back_base_url}/comments/${articleId}/comment/${comment_id}/`, {
                 headers: {
                     Authorization: `Bearer ${access}`,
@@ -424,7 +424,7 @@ async function commentUpdateConfirm(comment_id) {
                 body: formData,
             });
             const data = await response.json();
-    
+
             if (response.status == 200) {
                 alert("수정 완료!")
                 window.location.reload()
@@ -563,5 +563,3 @@ window.onload = async function () {
         }
     });
 };
-
-

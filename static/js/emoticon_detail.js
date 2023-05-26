@@ -228,11 +228,13 @@ window.onload = async function () {
     const userEmoticon = await getUserEmoticon(userId)
     console.log(userEmoticon)
     const selectInput = document.createElement('input')
-    selectInput.innerText = '사용하기'
     selectInput.setAttribute('id', 'select_input')
     selectInput.setAttribute('value', 'True')
     selectInput.setAttribute('type', 'checkbox')
-
+    
+    const selectlabel = document.createElement('label')
+    selectlabel.innerText = '사용하기'
+    
     const idList = userEmoticon.map(obj => obj.id);
     if (idList.includes(parseInt(emoticonId))) {
         selectInput.setAttribute('checked', 'True')
@@ -240,5 +242,6 @@ window.onload = async function () {
     selectInput.addEventListener('click', function () {
         emoticonSelect(emoticonId)
     })
+    parentsDiv.appendChild(selectlabel)
     parentsDiv.appendChild(selectInput)
 }

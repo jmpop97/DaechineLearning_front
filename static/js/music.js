@@ -1,3 +1,4 @@
+token = localStorage.getItem("access")
 async function music_search() {
     const query = document.querySelector("#query").value
     let limit = document.querySelector("#limit").value
@@ -86,19 +87,33 @@ async function preview_music(track) {
 }
 
 async function save_db(track) {
-    console.log("===3===")
-    console.log(track)
-    console.log("===4===")
+    const imageUrl = track.album.images[1].url;
     const formdata = new FormData()
+    const user = JSON.parse(localStorage.getItem("payload")).user_id
+    console.log("-----1-------")
+    console.log(imageUrl)
+    console.log("-----2-------")
+    formdata.append('user', user)
+    formdata.append('images', imageUrl)
     formdata.append('name', track.name)
     formdata.append('artist', track.artist)
     formdata.append('album', track.album.name)
     formdata.append('music_id', track.album.id)
-
     const response = await fetch(`http://127.0.0.1:8000/articles/save_music`, {
         method: "POST",
-        body: formdata
+        headers: {
+            'Authorization': `Bearer ${token}`,
+
+        },
+        body: formdata,
     })
+    console.log("=======1======")
+
+    console.log("=======2======")
+    console.log("===3===")
+    console.log(track)
+    console.log("===4===")
+
 
     const data = await response.json()
     console.log(data)
@@ -189,3 +204,24 @@ async function createDownloadLink(blob) {
     document.getElementById("query").value = data["message"]
 }
 
+window.onload = () => {
+    let close = true
+    let jk_record = document.querySelector("#recordButton")
+    let jk_close = document.querySelector("#closeButton")
+    console.log(jk_close, jk_record)
+    jk_close.style.display = "none"
+    jk_record.addEventListener('click', function () {
+        if (close = true) {
+            jk_record.style.display = "none"
+            jk_close.style.display = "inline"
+            close = false
+        }
+    })
+    jk_close.addEventListener('click', function () {
+        if (close = true) {
+            jk_close.style.display = "none"
+            jk_record.style.display = "inline"
+            close = false
+        }
+    })
+}
