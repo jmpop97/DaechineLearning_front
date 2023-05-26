@@ -6,7 +6,3 @@ const payload = localStorage.getItem("payload");
 const payload_parse = JSON.parse(payload)
 
 
-console.log(token)
-console.log(payload_parse)
-console.log(payload_parse.username)
-console.log(payload_parse.email)
