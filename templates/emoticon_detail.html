@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>이모티콘 자세히 보기</title>
+    <title>대신러닝 | 이모티콘 자세히 보기</title>
     <script src="../components/urls.js"></script>
     <script src="../static/js/emoticon_detail.js"></script>
     <!-- CSS only -->
@@ -19,13 +19,21 @@
 
 <body>
 
-    <div class="container text-center mt-5">
-
+    <div class="container text-center mt-5" id="parents">
         <h1 class="mb-5">이모티콘 자세히 보기</h1>
-            <h3>이모티콘제목</h3>
-            <div>이미지들</div>
+        <h3 id="title">이모티콘제목</h3>
+        <form>
+            <div id="remove_images"></div>
+            <div class="row row-cols-5 row-cols-md-5 justify-content-center mb-3" id="images">
+            </div>
+            <div id="image_input"></div>
+        </form>
     </div>
-
+    <div class="container text-center mt-5">
+        <button type="button" onclick="location.href=`${front_base_url}/templates/emoticon_list.html?article_id=1`">리스트</button>
+        <button type="button" onclick="location.href='/'">홈</button>
+    </div>
+    <script src="../static/js/header.js"></script>
 </body>
 
 </html>

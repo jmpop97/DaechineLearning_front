@@ -10,7 +10,6 @@ async function emoticonCreate() {
     for (let i = 0; i < emoticonImage.length; i++) {
         formData.append("images", emoticonImage[i]);
     }
-    console.log(formData.getAll)
 
     const response = await fetch(`${back_base_url}/comments/emoticon/`, {
         headers: {
